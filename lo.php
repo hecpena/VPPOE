@@ -18,12 +18,12 @@
 
 	if ($API->connect($ipRouterOS, $Username, $Pass, $api_puerto)) {
 
-    $API->comm("/ppp/secret/add", array(
-            "name"     => "$name",
-            "password" => "$password",
-            "service"  => "$service",
-            "profile"  => "$profile",
-    ));
+        $API->comm("/ppp/secret/add", array(
+                "name"     => "$name",
+                "password" => "$password",
+                "service"  => "$service",
+                "profile"  => "$profile",
+        ));
 
     }
 ?>
