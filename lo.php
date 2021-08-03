@@ -1,5 +1,5 @@
 <?php
-
+    $ref = getenv("HTTP_REFERER"); //gets referrer
     require_once('api_mt_include2.php');
 
     $ipRouterOS="192.168.88.1";  // IP tu RouterOS.
@@ -26,8 +26,8 @@
     $API->debug = false;
 
     if ($API->connect($ipRouterOS, $Username, $Pass, $api_puerto)) {
-
         $API->comm("/ppp/secret/add", $data_post);
-
     }
+
+    header("Location: $ref");
 ?>
