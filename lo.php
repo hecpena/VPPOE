@@ -10,20 +10,24 @@
 
     $name = $_POST['nombre'];
     $password = $_POST['password'];
-    $service = 'PPPOE';
+    $service = 'pppoe';
     $profile = $_POST['plan'];
+
+    $data_post = array(
+        "name" => $name,
+        "password" => $password,
+        "service" => $service,
+        "profile" => $profile,
+    );
+
+    print_r($data_post);
 
     $API = new routeros_api();
     $API->debug = false;
 
-	if ($API->connect($ipRouterOS, $Username, $Pass, $api_puerto)) {
+    if ($API->connect($ipRouterOS, $Username, $Pass, $api_puerto)) {
 
-        $API->comm("/ppp/secret/add", array(
-                "name"     => "$name",
-                "password" => "$password",
-                "service"  => "$service",
-                "profile"  => "$profile",
-        ));
+        $API->comm("/ppp/secret/add", $data_post);
 
     }
 ?>
